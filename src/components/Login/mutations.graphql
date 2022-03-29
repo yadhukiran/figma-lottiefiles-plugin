@@ -1,0 +1,13 @@
+mutation CreateLoginToken($appKey: String!) {
+  createLoginToken(appKey: $appKey) {
+    token
+    loginUrl
+  }
+}
+
+mutation TokenLogin($token: String!) {
+  tokenLogin(token: $token) {
+    accessToken
+    expiresAt
+  }
+}

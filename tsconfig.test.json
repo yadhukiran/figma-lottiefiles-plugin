@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
+  "includes": ["src/**/*.test.ts", "__mocks__/**/*.ts", "jest.setup.ts"]
+}

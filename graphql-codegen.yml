@@ -1,0 +1,10 @@
+overwrite: true
+schema: ${LOTTIEFILES_GRAPHQL_ENDPOINT_URL}
+documents: "src/**/*.graphql"
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-urql"
+      # - "urql-introspection"

@@ -1,0 +1,4 @@
+.gitignore
+.eslintignore
+dist
+src/generated/graphql.ts

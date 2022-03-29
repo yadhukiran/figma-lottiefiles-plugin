@@ -1,0 +1,63 @@
+query Featured($page: Float!) {
+  featured(page: $page) {
+    totalPages
+    currentPage
+    results {
+      id
+      name
+      downloads
+      lottieVersion
+      lottieUrl
+      slug
+      gifUrl
+      bgColor
+      imageUrl
+      videoUrl
+      createdAt
+      updatedAt
+      createdBy {
+        id
+        name
+        avatarUrl
+        url
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+query SearchResults($query: String!, $page: Float!, $pageSize: Float!) {
+  search(query: $query, page: $page, pageSize: $pageSize, withAep: false) {
+    from
+    to
+    total
+    totalPages
+    currentPage
+    results {
+      id
+      name
+      downloads
+      lottieVersion
+      sourceFileUrl
+      url
+      slug
+      lottieUrl
+      gifUrl
+      bgColor
+      imageUrl
+      videoUrl
+      createdAt
+      updatedAt
+      createdBy {
+        id
+        name
+        avatarUrl
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
