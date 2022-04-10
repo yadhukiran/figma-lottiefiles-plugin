@@ -7,6 +7,7 @@ import { getAuthStateFromClientStorage } from "./auth";
 import { T_AuthState } from "../typings/auth";
 import { isDateExpired } from "./date";
 import poll from "./poll";
+import appConstants from "../appConstants";
 
 let authState: T_AuthState | null = null;
 
@@ -76,7 +77,7 @@ const authExchangeConfig: AuthConfig<T_AuthState> = {
 const cache = cacheExchange({});
 
 export const urqlClient = new Client({
-  url: "https://graphql.lottiefiles.com" || "", // TODO: take from env
+  url: appConstants.lottieFilesGraphQLEndpointURL,
   exchanges: [
     dedupExchange,
     cache,

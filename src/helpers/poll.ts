@@ -1,10 +1,10 @@
-const oneMinute = 1 * 60 * 1000;
+const fiveMinutes = 5 * 60 * 1000;
 const fiveSeconds = 5 * 1000;
 
 export default function poll<R>(
   fn: () => R,
   interval: number = fiveSeconds,
-  timeout: number = oneMinute
+  timeout: number = fiveMinutes
 ): Promise<R> {
   const endTime = Number(new Date()) + timeout;
 

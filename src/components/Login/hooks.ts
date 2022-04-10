@@ -17,6 +17,7 @@ import {
   getAuthStateFromClientStorage,
   setAuthStateToClientStorage,
 } from "../../helpers/auth";
+import appConstants from "../../appConstants";
 
 export function useAuthStateFromClientStorage() {
   useEffect(() => {
@@ -33,13 +34,8 @@ export function useCreateLoginToken() {
     useCreateLoginTokenMutation();
 
   useEffect(() => {
-    if (
-      !isLoggedIn &&
-      hasCheckedAuthStateInClientStorage
-      // && APP_KEY
-    ) {
-      // TODO: use key from env
-      createLoginToken({ appKey: "3c02f0d3-4a5a-4cb7-af91-77262f089165" });
+    if (!isLoggedIn && hasCheckedAuthStateInClientStorage) {
+      createLoginToken({ appKey: appConstants.lottieFilesAppKey });
     }
   }, [isLoggedIn, hasCheckedAuthStateInClientStorage, createLoginToken]);
 
@@ -64,10 +60,10 @@ export function useTokenLogin(token?: string, loginUrl?: string) {
         try {
           const tokenLoginResult = await poll(async () => {
             const tokenLoginResponse = await attemptTokenLogin({ token });
-  
+
             return tokenLoginResponse.data?.tokenLogin;
           });
-  
+
           if (tokenLoginResult) {
             const { accessToken, expiresAt } = tokenLoginResult;
             setAuthStateToClientStorage({ accessToken, expiresAt });
@@ -86,6 +82,6 @@ export function useTokenLogin(token?: string, loginUrl?: string) {
     attemptTokenLogin,
     setAccessTokenState,
     setIsLoggedInState,
-    setIsLoginInProgressState
+    setIsLoginInProgressState,
   ]);
 }
