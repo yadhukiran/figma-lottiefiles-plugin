@@ -16,7 +16,7 @@ In the project directory, you can run:
 ## How to use
 
 1. Go to "https://lottiefiles.com/" and create account or login
-2. Create an app at "https://lottiefiles.com/" and copy app key
+2. Create an app at "https://lottiefiles.com/developers" and copy app key
 3. Checkout the project in your local machine
 4. `npm install`
 5. Paste LottieFiles app key as the value of `lottieFilesAppKey` in `src\appConstants\index.ts`.
