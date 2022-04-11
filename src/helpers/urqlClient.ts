@@ -25,6 +25,8 @@ export function setAuthStateForURQLExchange(value: T_AuthState) {
 const authExchangeConfig: AuthConfig<T_AuthState> = {
   addAuthToOperation: ({ authState, operation }) => {
     // the token isn't in the auth state, return the operation without changes
+    console.log("==> addAuthToOperation::authState", typeof authState);
+
     if (!authState || !authState.accessToken) {
       return operation;
     }
@@ -41,7 +43,7 @@ const authExchangeConfig: AuthConfig<T_AuthState> = {
         ...fetchOptions,
         headers: {
           ...fetchOptions.headers,
-          Authorization: authState.accessToken,
+          Authorization: `Bearer ${authState.accessToken}`,
         },
       },
     });
@@ -56,9 +58,14 @@ const authExchangeConfig: AuthConfig<T_AuthState> = {
           100,
           5000
         );
+        console.log(
+          "==> getAuth::authStateFromClientStorage ",
+          authStateFromClientStorage.accessToken,
+          isDateExpired(authStateFromClientStorage.expiresAt)
+        );
         if (
           authStateFromClientStorage &&
-          isDateExpired(authStateFromClientStorage.expiresAt)
+          !isDateExpired(authStateFromClientStorage.expiresAt)
         ) {
           return authStateFromClientStorage;
         }

@@ -17,7 +17,7 @@ function LottiesHome() {
     <div className="">
       <button
         onClick={handleLogout}
-        className="fixed text-xs rounded bg-gray-100 right-0 top-0 border py-1 px-2"
+        className="fixed z-10 text-xs rounded bg-gray-100 right-0 top-0 border py-1 px-2"
       >
         Logout
       </button>

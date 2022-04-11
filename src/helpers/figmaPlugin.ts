@@ -9,7 +9,10 @@ export async function clientStorageGet(key: string) {
   try {
     const value = await figma.clientStorage.getAsync(key);
     console.log("\n ==> clientStorageGet", key, value);
-    postMessageToUI({ type: E_FigmaUIEvents.clientStorageGet, payload: value });
+    postMessageToUI({
+      type: E_FigmaUIEvents.clientStorageGet,
+      payload: JSON.parse(value),
+    });
   } catch (error) {
     console.log("\n ==> clientStorageGet::ERROR", error);
     postMessageToUI({ type: E_FigmaUIEvents.clientStorageGet, payload: null });
